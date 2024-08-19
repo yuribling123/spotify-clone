@@ -17,7 +17,7 @@ const ModalProvider = () => {
 
     return (
         <>
-            <Modal />
+            <Modal title="test modal" description="test description" isOpen onChange={()=>{}}> Test children</Modal>
         </>
     );
 };
