@@ -1,10 +1,22 @@
+import useAuthModal from "@/hooks/useAuthModal";
+import useUploadModal from "@/hooks/useUploadModal";
+import { useUser } from "@/hooks/useUser";
 import { AiOutlinePlus } from "react-icons/ai";
 import { TbPlaylist } from "react-icons/tb";
 
 const Library = () => {
+    const authModal = useAuthModal()
+    const { user } = useUser();
+    const uploadModal = useUploadModal(); 
 
 
-    const onClick = () => { };
+    const onClick = () => {
+        if (!user) {
+            return authModal.onOpen();
+        }
+    };
+
+    // check subsription
     return (
 
         <div className="flex flex-col ">
@@ -21,7 +33,7 @@ const Library = () => {
             </div>
 
             <div className="flex flex-col gap-y-2  mt-4 px-3">
-                    list of songs  
+                list of songs
 
 
             </div>
