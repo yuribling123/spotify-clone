@@ -3,6 +3,7 @@ import useUploadModal from "@/hooks/useUploadModal";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import Input from "./input";
 
 const UploadModal = () => {
 
@@ -37,9 +38,11 @@ const UploadModal = () => {
       isOpen={uploadModal.isOpen}
       onChange={onChange}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
 
-      </form>
+      <Input id= "title" disabled={isLoading} {...register('title',{required:true})}/>
+      <Input id= "author" disabled={isLoading} {...register('title',{required:true})}/>
+      </form>  
     </Modal>
   );
 }
