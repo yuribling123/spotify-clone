@@ -56,10 +56,7 @@ const UploadModal = () => {
       const uniqueID = uniqid();
 
       // Upload song
-      const {
-        data: songData,
-        error: songError,
-      } = await supabaseClient
+      const { data: songData, error: songError } = await supabaseClient
         .storage
         .from('songs')
         .upload(`song-${values.title}-${uniqueID}`, songFile, {
@@ -72,12 +69,8 @@ const UploadModal = () => {
         return toast.error('Failed song upload.');
       }
 
-      // Upload Image
-
-      const {
-        data: imageData,
-        error: imageError,
-      } = await supabaseClient
+      // Upload image
+      const { data: imageData, error: imageError } = await supabaseClient
         .storage
         .from('images')
         .upload(`image-${values.title}-${uniqueID}`, imageFile, {
@@ -90,12 +83,11 @@ const UploadModal = () => {
         return toast.error('Failed image upload.');
       }
 
-      // create new row
-      const {
-        error: supabaseError
-      } = await supabaseClient
+      // Insert the song record with the uniqueID as the ID
+      const { error: supabaseError } = await supabaseClient
         .from('songs')
         .insert({
+          id: uniqueID, // Use uniqueID as the song ID
           user_id: user.id,
           title: values.title,
           author: values.author,
@@ -107,9 +99,10 @@ const UploadModal = () => {
         setIsLoading(false);
         return toast.error(supabaseError.message);
       }
+
       router.refresh();
       setIsLoading(false);
-      toast.success('Song Created !');
+      toast.success('Song Created!');
       reset();
       uploadModal.onClose();
     } catch (error) {
@@ -118,6 +111,7 @@ const UploadModal = () => {
       setIsLoading(false);
     }
   };
+
 
   return (
     <Modal
