@@ -1,5 +1,16 @@
 import Stripe from "stripe";
 
+
+export interface Song {
+    id: string;
+    user_id: string;
+    author: string;
+    title: string;
+    song_path: string;
+    image_path: string;
+}
+
+
 export interface UserDetails {
     id: string;
     first_name: string;
@@ -53,7 +64,7 @@ export interface Subscription {
     current_period_end: string;
     ended_at?: string;
     cancel_at?: string;
-    tiral_start?:string;
-    tiral_end?:string;
+    tiral_start?: string;
+    tiral_end?: string;
     prices?: Price;
 }
