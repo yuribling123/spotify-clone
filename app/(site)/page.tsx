@@ -2,11 +2,13 @@ import Image from "next/image";
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
 import getSongs from "@/actions/getSongs";
+import PageContent from "./components/PageContent";
 
 export const revalidate = 0 ; 
 
 export default async function Home() {
   const songs = await getSongs();
+  
   return (
     <div className="
     bg-neutral-900
@@ -32,12 +34,12 @@ export default async function Home() {
 
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-white text-2xl font-semibold">
+          <h1 className="text-white text-2xl f ont-semibold">
             Newest songs
           </h1>
         </div>
         <div>
-          {songs.map((song)=> <div>{song.title}</div>    )}
+          <PageContent songs={songs}></PageContent>
         </div>
       </div>
 
