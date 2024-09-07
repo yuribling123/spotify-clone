@@ -9,6 +9,6 @@ export async function middleware(req: NextRequest) {
     res,
   });
 
-  await supabase.auth.getSession();// retrieve the current user session from Supabase 
+  await supabase.auth.getUser();// retrieve the current user session from Supabase 
   return res;
 }
