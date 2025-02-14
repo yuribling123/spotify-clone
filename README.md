@@ -11,6 +11,10 @@
 
 
 ---
+![image](https://github.com/user-attachments/assets/ef332778-3f14-436c-b48d-ff613b048cc1)
+
+
+issue with supabase database
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
