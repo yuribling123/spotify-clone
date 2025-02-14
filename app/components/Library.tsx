@@ -35,7 +35,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
 
                 <div className="inline-flex items-center gap-x-2">
                     <TbPlaylist size={26} className="text-neutral-400"></TbPlaylist>
-                    <p className="text-neutral-400 font-medium text-md"> Your library</p>
+                    <p className="text-neutral-400 font-medium text-md"> Your fav library</p>
                 </div>
 
                 <AiOutlinePlus onClick={onClick} size={20} className="text-neutral-400 cursor-pointer hover:text-white transition"></AiOutlinePlus>
@@ -43,10 +43,13 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
             </div>
 
             <div className="flex flex-col gap-y-2  mt-4 px-3">
-                {songs.map((item) => (
-                    // <div>{item.title}</div>
-                    <MediaItem key={item.id}  data={item} onClick={()=>{}}></MediaItem>
-                ))}
+                {(!songs || songs.length === 0) ? (
+                    <p className="text-neutral-500 text-center">No songs available</p>
+                ) : (
+                    songs.map((item) => (
+                        <MediaItem key={item.id} data={item} onClick={() => { }} />
+                    ))
+                )}
 
             </div>
 
